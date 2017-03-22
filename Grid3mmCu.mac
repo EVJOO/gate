@@ -1,0 +1,55 @@
+################################
+# copper 3 mm Multi Grid       #
+# size: 193 mm * 242 mm        #
+# number: 97 * 122             #
+################################
+# Grid
+# Create a full volume defining the shape of the grid
+##
+/gate/world/daughters/name grid
+/gate/world/daughters/insert box
+/gate/grid/geometry/setXLength 194.0 mm  # 193 
+/gate/grid/geometry/setYLength 242.0 mm   # 242
+/gate/grid/geometry/setZLength 3. mm
+/gate/grid/placement/setTranslation 0. 0. -254.9 mm
+/gate/grid/setMaterial Copper
+/gate/grid/vis/setColor red
+/gate/grid/vis/forceSolid
+#
+# Insert the first hole of air in the Grid
+##
+/gate/grid/daughters/name holex
+/gate/grid/daughters/insert box
+/gate/holex/geometry/setXLength 1. mm
+/gate/holex/geometry/setYLength 1. mm
+/gate/holex/geometry/setZLength 1. mm
+/gate/holex/setMaterial Air
+#
+# Repeat the hole in an array
+##
+/gate/holex/repeaters/insert cubicArray
+/gate/holex/cubicArray/setRepeatNumberX 97
+/gate/holex/cubicArray/setRepeatNumberY 121
+/gate/holex/cubicArray/setRepeatNumberZ 1
+/gate/holex/cubicArray/setRepeatVector  2. 2. 0. mm
+#
+# Insert the second hole of air in the Grid
+##
+/gate/grid/daughters/name holey
+/gate/grid/daughters/insert box
+/gate/holey/geometry/setXLength 1. mm
+/gate/holey/geometry/setYLength 1. mm
+/gate/holey/geometry/setZLength 1. mm
+/gate/holey/setMaterial Air
+/gate/holey/placement/setTranslation -1. -1. 0. mm
+#
+# Repeat the hole in an array
+##
+/gate/holey/repeaters/insert cubicArray
+/gate/holey/cubicArray/setRepeatNumberX 97
+/gate/holey/cubicArray/setRepeatNumberY 121
+/gate/holey/cubicArray/setRepeatNumberZ 1
+/gate/holey/cubicArray/setRepeatVector  2. 2. 0. mm
+
+
+
